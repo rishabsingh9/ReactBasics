@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import ExpenseItem from './components/ExpenseItem';
+import ExpenseItem from './components/Expenses/ExpenseItem';
 
 function App() {
   const expenses = [
@@ -29,7 +29,7 @@ function App() {
   ];
   const expenseArr=expenses.map((expense)=>(
     <
-      ExpenseItem
+      ExpenseItem 
       title={expense.title}
       amount={expense.amount}
       date={expense.date}
