@@ -1,29 +1,30 @@
 import "./Expenseitem.css";
-import React, { useRef } from 'react';
+import React, { useRef,useState} from 'react';
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 function ExpenseItem(props) {
 
-// const deleted=()=>{
-// //   const exp=document.querySelector('.expense-item');
-// //   const parent=exp.parentNode;
-// //   parent.removeChild(exp);
-// // }
 const expenseRef = useRef(null);
+const[amount,setAmount]=useState(props.amount);
 
-const deleted = () => {
-  if (expenseRef.current) {
-    expenseRef.current.remove();
-    console.log("Expense deleted");
-  }
+// const deleted = () => {
+//   if (expenseRef.current) {
+//     expenseRef.current.remove();
+//     console.log(expenseRef);
+//   }
+// }
+const update=()=>{
+  setAmount(100);
 }
+
+
 
   return (
     <div className="expense-item"  ref={expenseRef}>
       <ExpenseDate date={props.date}/>
       <ExpenseDetails title={props.title}  location={props.location}/>
-      <div className="expense-item__price ">${props.amount}</div>
-      <button onClick={deleted}>Delete Expense</button>
+      <div className="expense-item__price ">${amount}</div>
+      <button onClick={update}>Update</button>
     </div>
   );
 }
