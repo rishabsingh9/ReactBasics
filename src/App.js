@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import ExpenseItem from './components/Expenses/ExpenseItem';
+import NewExpense from './components/NewExpense/NewExpense'
 
 function App() {
   const expenses = [
@@ -40,6 +41,7 @@ function App() {
   return (
     <div>
       <h2>Let's get Started</h2>
+      <NewExpense></NewExpense>
       {expenseArr}
     </div>
   );
