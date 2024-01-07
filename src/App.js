@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import ExpenseItem from './components/Expenses/ExpenseItem';
 import NewExpense from './components/NewExpense/NewExpense'
+import { useState } from 'react';
 
 function App() {
   const expenses = [
@@ -28,6 +29,14 @@ function App() {
       LocationOfExpenditure:'Pune'
     },
   ];
+  // const[allexpenses,changeExpenses]=useState(expenses);
+  // const addExpenseHandler=(expense)=>{
+  //   console.log("in app.js");
+  //   console.log(expense);
+  //   changeExpenses((previousExpense)=>{
+  //     return[...previousExpense,expense]
+  //   })
+  // }
   const expenseArr=expenses.map((expense)=>(
     <
       ExpenseItem 
@@ -41,7 +50,7 @@ function App() {
   return (
     <div>
       <h2>Let's get Started</h2>
-      <NewExpense></NewExpense>
+      <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
       {expenseArr}
     </div>
   );
