@@ -12,33 +12,51 @@ const Expenses=(props)=>{
       setFilteredYear(selectedYear);
     };
     const expenses=props.expenses;
-    const[allexpenses,changeExpenses]=useState(expenses);
-    const addExpenseHandler=(expense)=>{
-      console.log("in app.js");
+    
+    // const expenseArr=expenses.map((expense)=>(
+    //     <ExpenseItem 
+    //     key={expense.id}
+    //     title={expense.title}
+    //     amount={expense.amount}
+    //     date={new Date(expense.date)}
+    //     location={expense.LocationOfExpenditure}
+    //   />
+    // ))
+    const filteredExpenses=expenses.filter((expense)=>{
       console.log(expense);
-      changeExpenses((previousExpense)=>{
-       // expenses.push(expense);
-        return[...previousExpense,expense]
-      })
+      return expense.date.getFullYear().toString()===filteredYear
+    })
+    console.log(filteredExpenses)
+
+    let expensesContent = <p>No expenses found.</p>;
+
+    if (filteredExpenses.length > 0) {
+      expensesContent = filteredExpenses.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={new Date(expense.date)}
+        />
+      ));
     }
-    const expenseArr=allexpenses.map((expense)=>(
-        <ExpenseItem 
-        title={expense.title}
-        amount={expense.amount}
-        date={new Date(expense.date)}
-        location={expense.LocationOfExpenditure}
-      />
-    ))
 
     return(
         <div>
         <Card className="expenses">
             <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
 
-             <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
-            {expenseArr}
+             
+             {/* {filteredExpenses.length==0?<p>No Expenses Found</p> :filteredExpenses.map((expense)=>{
+              <ExpenseItem title={expense.title}
+              amount={expense.amount} 
+              date={new Date(expense.date)}
+              />
+            })} */}
+            {expensesContent}
         </Card>
         </div>
     )
 }
 export default Expenses;
+
