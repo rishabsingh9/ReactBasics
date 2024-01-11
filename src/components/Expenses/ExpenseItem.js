@@ -21,12 +21,14 @@ const update=()=>{
 
 
   return (
+    <li>
     <Card className="expense-item"  ref={expenseRef}>
       <ExpenseDate date={props.date}/>
       <ExpenseDetails title={props.title}  location={props.location}/>
       <div className="expense-item__price ">${amount}</div>
       <button onClick={update}>Update</button>
     </Card>
+    </li>
   );
 }
 
